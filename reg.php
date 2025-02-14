@@ -7,6 +7,24 @@
         $age = $_POST['age'];
         $gender = $_POST['gender'];
         $password = $_POST['password'];
+        $file_name = $_FILES['profile_image']['name'];
+        $file_tmp = $_FILES['profile_image']['tmp_name'];
+        $folder = "images/".$file_name;
+        $identity = $_POST['identity'];
+
+        if(move_uploaded_file($file_tmp, $folder)) {
+            echo
+            "<script>
+                alert('Image uploaded successfully');
+            </script>";
+        }
+        else {
+            echo
+            "<script>
+                alert('Image upload failed');
+            </script>";
+        }   
+
         $duplicate = "SELECT * FROM reg WHERE login_id = '$userid' OR email = '$email'";
         if (mysqli_num_rows(mysqli_query($conn, $duplicate)) > 0) {
             echo
@@ -15,7 +33,8 @@
             </script>";
         }
         else {
-            $query = "INSERT INTO reg VALUES ('$userid', '$nick_name', '$email', '$age', '$gender', '$password')";
+            $query = "INSERT INTO reg VALUES ('$userid', '$nick_name', '$email', '$age', '$gender', '$password', 
+            '$file_name', '$identity')";
             mysqli_query($conn, $query);
             echo
             "<script>
@@ -36,19 +55,31 @@
 </head>
 <body>
     <h2>Registration</h2>
-    <form name="regform" action="" method="post" >
+    <form name="regform" action="" method="post" enctype="multipart/form-data">
         <label>Userid:</label><br>
         <input type="text"  name="userid" KOd ><br>
         <label>Nick name:</label><br>
         <input type="text"  name="nick_name" required><br>
         <label>Email:</label><br>
-        <input type="text"  name="email" required><br>
+        <input type="email"  name="email" required><br>
         <label>Age:</label><br>
-        <input type="text"  name="age" required><br>
+        <input type="number"  name="age" required><br>
         <label>Gender:</label><br>
-        <input type="text"  name="gender" required><br>
+        <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br><br>
+        <label>Profile Image:</label><br>   
+        <input type="file" name="profile_image" required><br><br>
+        <label>Register as:</label><br>
+        <select name="identity" required>
+            <option value="">Select identity</option>
+            <option value="Student">Student</option>
+            <option value="Tutor">Tutor</option>
+        </select><br><br>
         <label>Password:</label><br>
-        <input type="password"  name="password" required><br>
+        <input type="password"  name="password" required><br><br>
         <button type="submit" name="submit">Register</button>
 
     </form>
