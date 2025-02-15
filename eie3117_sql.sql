@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2025 at 05:19 PM
+-- Generation Time: Feb 15, 2025 at 07:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,7 +43,9 @@ CREATE TABLE `reg` (
 --
 
 INSERT INTO `reg` (`login_id`, `nick_name`, `email`, `age`, `gender`, `password`, `profile_image`, `identity`) VALUES
-(1, 'admin', 'admin@gmail.com', 11, 'Male', '1234', 'admin.png', 'Student');
+(1, 'admin', 'admin@gmail.com', 11, 'Male', '1234', 'admin.png', 'Student'),
+(2, 'tutor_1', 'tutor1@gmail.com', 1, 'Male', '1234', 'download.jfif', 'Tutor'),
+(3, 'tutor_2', 'tutor2@gmail.com', 94, 'Male', '1234', 'admin.png', 'Tutor');
 
 --
 -- Indexes for dumped tables
