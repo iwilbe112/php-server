@@ -1,6 +1,15 @@
 <?php
     require 'database.php';
 
+    if(!isset($_COOKIE['userid']) || !isset($_COOKIE['nick_name'])) {
+        echo
+        "<script>
+            alert('Please login first');
+            window.location.href = 'index.php';
+        </script>";
+        exit();
+    }
+
     // Retrieve all tutors from the database
     $result = mysqli_query($conn, "SELECT * FROM reg WHERE identity = 'Tutor'");
 
@@ -20,20 +29,20 @@
 <body>
     <h2>List of Tutors</h2>
     <table border="2">
-        <tr>
-            <th>Nick Name</th>
-            <th>Email</th>
-            <th>Age</th>
-            <th>Gender</th>
+    <tr>
+            <th>Tutor Name</th>
             <th>Details</th>
         </tr>
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
         <tr>
             <td><?php echo htmlspecialchars($row['nick_name']); ?></td>
-            <td><?php echo htmlspecialchars($row['email']); ?></td>
-            <td><?php echo htmlspecialchars($row['age']); ?></td>
-            <td><?php echo htmlspecialchars($row['gender']); ?></td>
             <td><a href="detail.php?id=<?php echo htmlspecialchars($row['login_id']); ?>">View</a></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <strong>Expertise Area:</strong> <?php echo htmlspecialchars($row['expertise_area']); ?><br>
+                <strong>Description:</strong> <?php echo htmlspecialchars($row['description']); ?>
+            </td>
         </tr>
         <?php endwhile; ?>
     </table> 

@@ -1,6 +1,15 @@
 <?php
     require 'database.php';
 
+    if(!isset($_COOKIE['userid']) || !isset($_COOKIE['nick_name'])) {
+        echo
+        "<script>
+            alert('Please login first');
+            window.location.href = 'index.php';
+        </script>";
+        exit();
+    }
+
     if (!isset($_GET['id'])) {
         echo "No tutor ID provided.";
         exit();
@@ -26,6 +35,8 @@
     $age = htmlspecialchars($row['age']);
     $gender = htmlspecialchars($row['gender']);
     $profile_image = htmlspecialchars($row['profile_image']);
+    $expertise_area = htmlspecialchars($row['expertise_area']);
+    $description = htmlspecialchars($row['description']);
 ?>
 
 <!DOCTYPE html>
@@ -41,9 +52,12 @@
     <p><strong>Email:</strong> <?php echo $email; ?></p>
     <p><strong>Age:</strong> <?php echo $age; ?></p>
     <p><strong>Gender:</strong> <?php echo $gender; ?></p>
+    <p><strong> Subject: </strong> <?php echo $expertise_area; ?> </p>
+    <p><strong> Description: </strong> <?php echo $description; ?> </p>
     <img src="images/<?php echo $profile_image; ?>" alt="Profile Image" width="100" height="100">
     <br>
     <br>
-    <a href="tutor_list.php">Back to List</a>
+    <a href="tutor_list.php">Back to List</a> <br>
+    <a href="logout.php">Logout</a>
 </body>
 </html>
