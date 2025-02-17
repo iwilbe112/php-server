@@ -11,6 +11,9 @@
         $file_tmp = $_FILES['profile_image']['tmp_name'];
         $folder = "images/".$file_name;
         $identity = $_POST['identity'];
+        $expertise_area = NULL;
+        $description = NULL;
+
 
         if(move_uploaded_file($file_tmp, $folder)) {
             echo
@@ -34,7 +37,7 @@
         }
         else {
             $query = "INSERT INTO reg VALUES ('$userid', '$nick_name', '$email', '$age', '$gender', '$password', 
-            '$file_name', '$identity')";
+            '$file_name', '$identity',  '$expertise_area', '$description')";
             mysqli_query($conn, $query);
             echo
             "<script>
