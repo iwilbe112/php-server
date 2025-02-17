@@ -28,6 +28,9 @@
 
         $update_query = "UPDATE reg SET expertise_area = '$expertise_area', description = '$description' WHERE login_id = '$userid'";
         mysqli_query($conn, $update_query);
+                echo "<script>
+            alert('Profile updated successfully');
+            </script>";
     }
 
 ?>
