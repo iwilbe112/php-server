@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2025 at 02:48 PM
+-- Generation Time: Apr 17, 2025 at 04:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,7 +33,7 @@ CREATE TABLE `reg` (
   `email` varchar(25) NOT NULL,
   `age` int(11) NOT NULL,
   `gender` text NOT NULL,
-  `password` char(12) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `profile_image` varchar(255) NOT NULL,
   `identity` text NOT NULL,
   `expertise_area` varchar(255) NOT NULL,
@@ -45,9 +45,9 @@ CREATE TABLE `reg` (
 --
 
 INSERT INTO `reg` (`login_id`, `nick_name`, `email`, `age`, `gender`, `password`, `profile_image`, `identity`, `expertise_area`, `description`) VALUES
-(1, 'admin', 'admin@gmail.com', 11, 'Male', '1234', 'admin.png', 'Student', '', ''),
-(2, 'tutor_1', 'tutor1@gmail.com', 1, 'Male', '1234', 'download.jfif', 'Tutor', 'math', 'DSE math 5**'),
-(3, 'tutor_2', 'tutor2@gmail.com', 94, 'Male', '1234', 'admin.png', 'Tutor', '', 'i am strong');
+(1, 'Alex', 'Alex@gmail.com', 21, 'Male', '$2y$10$KPneOUhKInrH.vm39GV8fOdkaTvGdt9ou4w/oB20bagUt1B8asNJ2', 'Screenshot_2025-04-16_233316.png', 'Tutor', '', ''),
+(2, 'Charles', 'andy@gmail.com', 21, 'Male', '$2y$10$ep4RFhuIbuFS/yeMOWHgPuphX27ubmunh6xnwqMIffgvAD5qcayda', 'Screenshot 2025-04-16 233316.png', 'Student', '', ''),
+(3, 'James', 'jameswtf@gmail.com', 11, 'Male', '$2y$10$jd3TVp6.nJeBhnPjHsqWcuvR1nBRpKF/SlF06MuLYddQ/fMVFybt2', 'download.jfif', 'Student', '', '');
 
 --
 -- Indexes for dumped tables
